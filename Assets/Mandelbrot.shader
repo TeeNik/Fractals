@@ -65,7 +65,10 @@ Shader "TeeNik/Mandelbrot"
                     z = float2(z.x * z.x - z.y * z.y, 2 * z.x * z.y) + c;
                     if (length(z) > 2) break;
                 }
-                return iter / 255;
+
+                float m = sqrt(iter / 255);
+                float4 col = sin(float4(0.3, 0.45, 0.65, 1.0) * m * 20) * 0.5 + 0.5;
+                return 1 - iter / 255;
             }
             ENDCG
         }
